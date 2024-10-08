@@ -3,6 +3,7 @@ from datetime import datetime
 
 ahora= datetime.now().year
 
+
 dia=int(input("Dia de naixement?"))
 mes=int(input("Mes de naixement?"))
 any=int(input("Any de naixement?"))
