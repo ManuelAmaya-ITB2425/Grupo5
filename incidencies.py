@@ -1,6 +1,6 @@
 import xml.etree.ElementTree as ET
 
-archivo_XML = ET.parse("incidenciasOK.xml")
+archivoXML = ET.parse("incidenciasOK.xml")
 raiz = archivo_XML.getroot()
 
 for row in raiz.findall('row'):
