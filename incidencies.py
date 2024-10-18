@@ -14,7 +14,6 @@ for row in raiz.findall('row'):
     propostaSolucio = row.find('DESCRIPCIÓ____PROPOSTA_DE_SOLUCIÓ')
     nivelUrgencia = row.find('NIVELL_URGÈNCIA_DE_SOLUCIÓ')
 
-
     print(f'Marca_de_Temps: {marcaTemps}, '
           f'Adreça_electrònica: {adreça}, '
           f'Informació_relativa_sobre_la_protecció_de_dades_en_compliment_del_Reglament_General_de_Protecció_de_Dades__Reglament_UE_2016_679_del_Parlament_Europeu_i_del_Consell__de_27_d_abril_de_2016_: {informacio},'
