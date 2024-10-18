@@ -13,7 +13,7 @@ df.columns = df.columns.str.strip().str.replace(' ', '_').str.replace('\n', '')
 df.columns = [re.sub(r'\W+', '_', col) for col in df.columns]
 
 # Convertir a XML
-xml_file = 'incidenciasOK.xml'  # Nombre del archivo XML de salida
+xml_file = '../incidenciasOK.xml'  # Nombre del archivo XML de salida
 df.to_xml(xml_file, index=False)
 
 print(f'Archivo convertido a XML y guardado como: {xml_file}')
