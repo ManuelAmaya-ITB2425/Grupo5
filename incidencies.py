@@ -1,7 +1,7 @@
 import xml.etree.ElementTree as ET
 
 archivoXML = ET.parse("incidenciasOK.xml")
-raiz = archivo_XML.getroot()
+raiz = archivoXML.getroot()
 
 for row in raiz.findall('row'):
     marcaTemps = row.find('Marca_de_temps').text
