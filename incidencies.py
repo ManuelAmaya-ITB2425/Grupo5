@@ -1,10 +1,10 @@
-import xml.etree.ElementTree as ET
+import xml.etree.ElementTree as ET #ElementTree es una biblioteca en Python que permet analitzar i crear dades XML
 
-archivoXML = ET.parse("incidenciasOK.xml")
-raiz = archivoXML.getroot()
+archivoXML = ET.parse("incidenciasOK.xml") #Per analitzar el arxiu XML
+raiz = archivoXML.getroot() #Per obtenir el node arrel
 
-for row in raiz.findall('row'):
-    marcaTemps = row.find('Marca_de_temps').text
+for row in raiz.findall('row'): #Busca tots el elements que coincideixin amb row amb el findall
+    marcaTemps = row.find('Marca_de_temps').text #Fa una busqueda de la etiqueta que hem posat i despres
     adreça = row.find('Adreça_electrònica').text
     informacio = row.find('Informació_relativa_sobre_la_protecció_de_dades_en_compliment_del_Reglament_General_de_Protecció_de_Dades__Reglament_UE_2016_679_del_Parlament_Europeu_i_del_Consell__de_27_d_abril_de_2016_')
     nomCognom = row.find('NOM_i_COGNOMS')
