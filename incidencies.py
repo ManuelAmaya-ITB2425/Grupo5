@@ -1,7 +1,12 @@
 import xml.etree.ElementTree as ET #ElementTree es una biblioteca en Python que permet analitzar i crear dades XML
+from datetime import datetime
 
 archivoXML = ET.parse("incidenciasOK.xml") #Per analitzar el arxiu XML
 raiz = archivoXML.getroot() #Per obtenir el node arrel
+
+fechaActual = datetime.now().year
+
+contador = 0
 
 for row in raiz.findall('row'): #Busca tots el elements que coincideixin amb row amb el findall
     marcaTemps = row.find('Marca_de_temps').text #Fa una busqueda de la etiqueta que hem posat i despres
@@ -24,3 +29,5 @@ for row in raiz.findall('row'): #Busca tots el elements que coincideixin amb row
           f'DESCRIPCIÓ____PROPOSTA_DE_SOLUCIÓ: {propostaSolucio},'
           f'NIVELL_URGÈNCIA_DE_SOLUCIÓ: {nivelUrgencia}')
 
+    contador += 1
+print('\033[0;35m'f'Hay {contador} incidencias')
