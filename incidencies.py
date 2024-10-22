@@ -1,4 +1,5 @@
 import xml.etree.ElementTree as ET #ElementTree es una biblioteca en Python que permet analitzar i crear dades XML
+import json
 from datetime import datetime
 
 
@@ -11,7 +12,7 @@ raiz = archivoXML.getroot()
 contadorTotal = 0
 contadorBuenas = 0
 contadorMalas = 0
-
+incidencias = []
 
 #Índica las fechas límites (de 1980 a la fecha actual)
 fechaLimiteInferior = datetime(1980, 1, 1)
@@ -42,8 +43,10 @@ for row in raiz.findall('row'):
         #Verifica si la fecha está dentro del rango especificado
         if fechaLimiteInferior <= dataIncidenciaDT <= fechaActual:
             contadorBuenas += 1
+            valid = True
         else:
             contadorMalas += 1
+            valid = False
 
     #Muestra la información de las incidencias
     print(f'Marca_de_Temps:\033[0;31;40m'f'{marcaTemps}\033[0;0m   '
@@ -55,6 +58,22 @@ for row in raiz.findall('row'):
           f'EQUIPS_i_o_SERVEIS_AFECTATS:\033[0;37;40m'f'{equipsAfectats}\033[0;0m   '
           f'DESCRIPCIÓ____PROPOSTA_DE_SOLUCIÓ:\033[0;38;40m'f'{propostaSolucio}\033[0;0m   '
           f'NIVELL_URGÈNCIA_DE_SOLUCIÓ:\033[0;30;47m'f'{nivelUrgencia}\033[0;0m   ')
+
+    # Guardar la incidencia en la lista
+    incidencia = {
+        "Marca_de_Temps": marcaTemps,
+        "Adreça_electrònica": adreça,
+        "Informació": informacio,
+        "Nom_i_Cognoms": nomCognom,
+        "Data_de_la_Incidència": dataIncidencia,
+        "Tipus_Incidència": tipusIncidencia,
+        "Equips_i_o_Serveis_Afectats": equipsAfectats,
+        "Proposta_Solucio": propostaSolucio,
+        "Nivell_Urgència": nivelUrgencia,
+        "Valida": valid  # Indica si la incidencia es válida o no
+    }
+    incidencias.append(incidencia)
+    contadorTotal += 1
 
     contadorTotal += 1
 
