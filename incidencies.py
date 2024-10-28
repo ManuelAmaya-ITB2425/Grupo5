@@ -68,7 +68,7 @@ if contadorTotal > 0:
     porcentageMalas = (contadorMalas / contadorTotal) * 100
     # Guardar la incidencia en la lista
     infoIncidencias = {
-        "Fecha": f'{fechaActual}',
+        "Fecha": fechaActual.strftime("%Y-%m-%d %H:%M:%S"),
         "Total de incidencias procesadas ": contadorTotal,
         "Total de incidencias validas ": contadorBuenas,
         "Total de incidencias invalidas ": contadorMalas,
@@ -83,8 +83,22 @@ if contadorTotal > 0:
 else:
     print('\033[0;31m'f"No se han procesado incidencias\033[0;31m")
 
+#Leer el contenido existente del fichero JSON, si existe
 ficheroJSON = "incidencias.json"
+if os.path.exists(ficheroJSON):
+    with open(ficheroJSON, 'r', encoding='utf-8') as json_file:
+        datosExistentes = json.load(json_file)
+    #Si datosExistente es un diccionario, conviertelo en una lista
+    if isinstance(datosExistentes, dict):
+        datosExistentes = [datosExistentes]
+else:
+    datosExistentes = []
+
+#Añadir la nueva incidencia a los datos existentes
+datosExistentes.append(infoIncidencias)
+
+#Guarda todos los datos en el fichero JSON
 with open(ficheroJSON, 'w', encoding='utf-8') as json_file:
-    json.dump(infoIncidencias, json_file, ensure_ascii=False, indent=4)
+    json.dump(datosExistentes, json_file, ensure_ascii=False, indent=4)
 
 print('\033[0;34m'f"\nEl fichero JSON '{ficheroJSON}' se ha creado exitosamente en la misma ubicacion que el script\033[0;34m")
