@@ -72,8 +72,8 @@ if contadorTotal > 0:
         "Total de incidencias procesadas ": contadorTotal,
         "Total de incidencias validas ": contadorBuenas,
         "Total de incidencias invalidas ": contadorMalas,
-        "Porcentage de las incidencias validas ": f'{porcentageBuenas:.2f}%',
-        "Porcentage de las incidencias invalidas ": f'{porcentageMalas:.2f}%' # Indica si la incidencia es válida o no
+        "Porcentaje de las incidencias validas ": f'{porcentageBuenas:.2f}%',
+        "Porcentaje de las incidencias invalidas ": f'{porcentageMalas:.2f}%' # Indica si la incidencia es válida o no
     }
     incidencias.append(infoIncidencias)
     #Muestra los resultados
